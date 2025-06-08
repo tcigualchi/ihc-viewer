@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analisador de IHC para Websites</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Analisador de IHC para Websites</h1>
+      <p class="description">Analise aspectos de Interação Humano-Computador, acessibilidade e usabilidade de qualquer site através da URL</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="input-section">
+      <h2>Insira a URL do site para análise</h2>
+      <div class="input-group">
+        <input type="url" id="url-input" placeholder="https://exemplo.com" required />
+        <button id="analyze-btn">Analisar</button>
+      </div>
+      <p>Observação: Devido a políticas de CORS, alguns sites podem não permitir a análise completa. Para melhores resultados, analise sites públicos sem restrições de CORS.</p>
+    </section>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Analisando o site. Por favor, aguarde...</p>
+    </div>
+
+    <section class="results" id="results">
+      <h2>Resultados da Análise</h2>
+
+      <div class="tab-container">
+        <div class="tabs">
+          <div class="tab active" data-tab="summary">Resumo</div>
+          <div class="tab" data-tab="accessibility">Acessibilidade</div>
+          <div class="tab" data-tab="semantics">Semântica</div>
+          <div class="tab" data-tab="design">Design</div>
+          <div class="tab" data-tab="usability">Usabilidade</div>
+        </div>
+      </div>
+
+      <!-- Abas de conteúdo -->
+      <div class="tab-content active" id="summary-tab">
+        <div class="summary" id="summary"></div>
+        <div class="details">
+          <div class="detail-section">
+            <h3>Visão Geral</h3>
+            <p id="overview-text">O site foi analisado e os resultados estão disponíveis nas abas acima.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outras abas (acessibilidade, semântica, etc) -->
+      <div class="tab-content" id="accessibility-tab">
+        <div class="detail-section">
+          <h3>Contraste de Cores</h3>
+          <div id="contrast-results"></div>
+        </div>
+        <div class="detail-section">
+          <h3>Elementos de Formulário</h3>
+          <ul class="issues-list" id="form-issues"></ul>
+        </div>
+        <div class="detail-section">
+          <h3>Atributos ARIA</h3>
+          <ul class="issues-list" id="aria-issues"></ul>
+        </div>
+      </div>
+
+      <div class="tab-content" id="semantics-tab">
+        <div class="detail-section">
+          <h3>Estrutura Semântica</h3>
+          <ul class="issues-list" id="semantic-issues"></ul>
+        </div>
+        <div class="detail-section">
+          <h3>Cabeçalhos</h3>
+          <ul class="issues-list" id="heading-issues"></ul>
+        </div>
+        <div class="detail-section">
+          <h3>Imagens</h3>
+          <ul class="issues-list" id="image-issues"></ul>
+        </div>
+        <div class="detail-section">
+          <h3>Links</h3>
+          <ul class="issues-list" id="link-issues"></ul>
+        </div>
+      </div>
+
+      <div class="tab-content" id="design-tab">
+        <div class="detail-section">
+          <h3>Tamanho de Fontes</h3>
+          <div id="font-size-results"></div>
+        </div>
+        <div class="detail-section">
+          <h3>Layout Responsivo</h3>
+          <ul class="issues-list" id="responsive-issues"></ul>
+        </div>
+        <div class="detail-section">
+          <h3>Espaçamento e Alinhamento</h3>
+          <ul class="issues-list" id="spacing-issues"></ul>
+        </div>
+      </div>
+
+      <div class="tab-content" id="usability-tab">
+        <div class="detail-section">
+          <h3>Problemas de Usabilidade</h3>
+          <ul class="issues-list" id="usability-issues"></ul>
+        </div>
+        <div class="detail-section">
+          <h3>Tempo de Carregamento</h3>
+          <ul class="issues-list" id="performance-issues"></ul>
+        </div>
+        <div class="detail-section">
+          <h3>Interatividade</h3>
+          <ul class="issues-list" id="interaction-issues"></ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Analisador de IHC para Websites © 2023 | Desenvolvido com HTML, CSS e JavaScript puro</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
