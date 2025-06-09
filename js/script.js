@@ -44,7 +44,7 @@
                     clearPreviousResults();
                     
                     // Obter o conteúdo do site via proxy CORS
-                    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+                    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
                     const data = await response.json();
                     
                     if (data.contents) {
