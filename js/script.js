@@ -28,44 +28,42 @@
             });
 
             async function analyzeWebsite() {
-                const url = urlInput.value.trim();
+            const url = urlInput.value.trim();
+            
+            if (!url) {
+                alert('Por favor, insira uma URL válida');
+                return;
+            }
+            
+            loadingElement.style.display = 'block';
+            resultsElement.style.display = 'none';
+            
+            try {
+                clearPreviousResults();
                 
-                if (!url) {
-                    alert('Por favor, insira uma URL válida');
-                    return;
+                const response = await fetch(`https://ihc-proxy.joaovictorgualchi.workers.dev/?url=${encodeURIComponent(url)}`);
+                
+                if (!response.ok) {
+                throw new Error(`Erro no proxy: ${response.status}`);
                 }
                 
-                // Mostrar loading e esconder resultados
-                loadingElement.style.display = 'block';
-                resultsElement.style.display = 'none';
+                const data = await response.json();
                 
-                try {
-                    // Limpar resultados anteriores
-                    clearPreviousResults();
-                    
-                    // Obter o conteúdo do site via proxy CORS
-                    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
-                    const data = await response.json();
-                    
-                    if (data.contents) {
-                        // Criar um documento temporário para análise
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data.contents, 'text/html');
-                        
-                        // Executar todas as análises
-                        runAllAnalyses(doc, url);
-                        
-                        // Mostrar resultados
-                        loadingElement.style.display = 'none';
-                        resultsElement.style.display = 'block';
-                    } else {
-                        throw new Error('Não foi possível acessar o site. Verifique a URL e tente novamente.');
-                    }
-                } catch (error) {
-                    loadingElement.style.display = 'none';
-                    alert(`Erro ao analisar o site: ${error.message}`);
-                    console.error('Erro na análise:', error);
+                if (data.contents) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data.contents, 'text/html');
+                runAllAnalyses(doc, url);
+                
+                loadingElement.style.display = 'none';
+                resultsElement.style.display = 'block';
+                } else {
+                throw new Error(data.error || 'Não foi possível acessar o site');
                 }
+            } catch (error) {
+                loadingElement.style.display = 'none';
+                alert(`Erro ao analisar o site: ${error.message}\n\nDica: Tente um site diferente ou aguarde alguns minutos.`);
+                console.error('Erro na análise:', error);
+            }
             }
 
             function clearPreviousResults() {
