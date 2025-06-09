@@ -44,7 +44,7 @@
                     clearPreviousResults();
                     
                     // Obter o conteúdo do site via proxy CORS
-                    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+                    const response = await fetch(`https://thingproxy.freeboard.io/fetch/${url}`);
                     const data = await response.json();
                     
                     if (data.contents) {
