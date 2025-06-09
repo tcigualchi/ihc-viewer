@@ -4,7 +4,7 @@
 
 **Uma ferramenta open source para analisar acessibilidade, usabilidade e boas práticas de IHC em qualquer site.**  
 
-🔗 **Demo:** [Acesse aqui](https://seu-usuario.github.io/ihc-analyzer)  
+🔗 **Demo:** [Acesse aqui](https://tcigualchi.github.io/ihc-viewer/)  
 
 ## 🚀 Funcionalidades  
 
@@ -31,7 +31,7 @@
 
 ## ⚙️ Como Usar  
 
-1. Acesse: [https://seu-usuario.github.io/ihc-analyzer](https://seu-usuario.github.io/ihc-analyzer)  
+1. Acesse: [https://tcigualchi.github.io/ihc-viewer/](https://tcigualchi.github.io/ihc-viewer/)  
 2. Cole a URL do site que deseja analisar  
 3. Clique em **"Analisar"** e aguarde o relatório  
 
@@ -69,7 +69,7 @@ Contribuições são bem-vindas! Siga os passos:
 
 ## 📜 Licença  
 
-MIT © [Seu Nome](https://github.com/tcigualchi)  
+MIT © [João Victor Gualchi](https://github.com/tcigualchi)  
 
 ---
 
